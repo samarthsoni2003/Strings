@@ -1,0 +1,57 @@
+https://www.codingninjas.com/studio/problems/reverse-string-word-wise_1262348?leftPanelTabValue=PROBLEM
+
+#include <iostream>
+using namespace std;
+
+string reverseStringWordWise(string input)
+{
+    int i=0;
+    int j=0;
+    int st=0;
+    int e=0;
+    while(j <= input.length()){
+
+        if((input[j] == ' ' && j != 0) || (j == input.length())){
+
+            st=i;
+            e=j-1;
+
+            if(input[i] == ' '){
+                i++;
+                continue;
+            }
+
+            while(st <= e){
+                swap(input[st], input[e]);
+                st++;
+                e--;
+            }
+
+            i=j+1;
+
+        }
+
+         j++;
+
+    }
+
+    st=0;
+    e=input.length()-1;
+
+    while(st <= e){
+        swap(input[st], input[e]);
+        st++;
+        e--;
+    }
+
+    return input;
+
+}
+
+int main()
+{
+    string s;
+    getline(cin, s);
+    string ans = reverseStringWordWise(s);
+    cout << ans << endl;
+}
